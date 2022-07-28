@@ -6,7 +6,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 module.exports = {
     entry: './src/index.tsx',
     output: {
-        path: resolve('/dist'),
+        path: resolve(__dirname, '../dist'),
         filename: 'js/[name].[contenthash].js'
     },
     module: {
