@@ -1,0 +1,15 @@
+.carousel
+    text-align: center
+    width: calc( 100% - 50px )
+    paddign: 0 3em
+    margin: 0 auto
+    margin-bottom: 7em
+    button
+        &:first-child::before
+            content: url('@icons/navbar-arrow-left.svg')
+        &:last-child::before
+            content: url('@icons/navbar-arrow-right.svg')
+
+.carousel_item
+    display: inline-block
+    cursor: pointer

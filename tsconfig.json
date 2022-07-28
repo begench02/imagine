@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es2016",
+        "moduleResolution": "node",
+        "jsx": "react-jsx",
+        "baseUrl": "src",
+        "paths": {
+            "@pages/*": ["pages/*"],
+            "@components/*": ["components/*"],
+            "@images/*": ["assets/images/*"],
+            "@icons/*": ["assets/icons/*"]
+        }
+    },
+    "exclude": ["node_modules"]
+}

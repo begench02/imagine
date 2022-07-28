@@ -1,0 +1,32 @@
+.main_block
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    margin-bottom: 9.3em
+
+.pagination
+    display: flex
+    .active_page
+        background-color: #000
+        color: #fff
+    div
+        cursor: pointer
+        border: #DFDFDF 1px solid
+        padding: 1.125em 1.625em
+        transition: 1s
+        path
+            transition: 1s
+        &:hover
+            background-color: #000
+            color: #fff
+            svg
+                path
+                    stroke: #fff
+
+.right_arrow
+    transform: rotate(180deg)
+
+.result
+    font-size: 1.125rem
+    margin-left: 2.5em
+    color: #959595
