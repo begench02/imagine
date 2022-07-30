@@ -1,10 +1,12 @@
 const { merge } = require('webpack-merge')
-const config = require('./webpack.config')
+const configBase = require('./webpack.config')
 
-module.exports = merge(config, {
+const configDev = {
     mode: 'development',
     devtool: 'source-map',
     devServer: {
-        port: 3000,
+        port: 3000
     }
-})
+}
+
+module.exports = merge(configBase, configDev)

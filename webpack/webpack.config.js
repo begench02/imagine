@@ -1,20 +1,23 @@
-const { resolve, join } = require('path')
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
+const resolve = dir => path.resolve(__dirname, `../${dir}`)
+
 module.exports = {
-    entry: './src/index.tsx',
+    entry: resolve('src/index.tsx'),
     output: {
-        path: resolve(__dirname, '../dist'),
-        filename: 'js/[name].[contenthash].js'
+        path: resolve('dist'),
+        filename: 'js/[name].[contenthash].js',
+        clean: true
     },
     module: {
         rules: [
             {
-                test: /\.(ts|tsx)$/,
+                test: /\.(ts|js)x?$/,
                 use: 'babel-loader',
-                include: join(__dirname, '../src')
+                include: resolve('src')
             },
             {
                 test: /\.(s[ac]|c)ss$/,
@@ -29,17 +32,12 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|gif)(\?.*)?$/,
-                include: join(__dirname, '../src/assets/images'),
+                test: /\.(png|jpe?g|gif)?$/,
                 loader: 'url-loader',
-                options: {
-                    outputPath: './fonts',
-                    name: '[name].[hash:4].[ext]'
-                }
+                include: resolve('src/assets')
             },
             {
-                test: /\.svg$/i,
-                issuer: /\.[jt]sx?$/,
+                test: /\.svg$/,
                 use: '@svgr/webpack'
             }
         ]
