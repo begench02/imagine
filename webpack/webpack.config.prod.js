@@ -1,13 +1,11 @@
 const { merge } = require('webpack-merge')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+
 const configBase = require('./webpack.config')
 
 const configProd = {
     mode: 'production',
-    optimization: {
-        minimize: true,
-        minimizer: [new OptimizeCssAssetsPlugin()]
-    }
+    plugins: [new CssMinimizerPlugin()]
 }
 
 module.exports = merge(configBase, configProd)
