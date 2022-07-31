@@ -1,23 +1,21 @@
-const path = require('path')
+const paths = require('./paths')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
-const resolve = dir => path.resolve(__dirname, `../${dir}`)
-
 module.exports = {
-    entry: resolve('src/index.tsx'),
+    entry: paths.entryPath,
     output: {
-        path: resolve('dist'),
+        path: paths.outputPath,
         filename: 'js/[name].[contenthash].js',
+        assetModuleFilename: 'assets/[name].[contenthash].[ext]',
         clean: true
     },
     module: {
         rules: [
             {
                 test: /\.(ts|js)x?$/,
-                use: 'babel-loader',
-                include: resolve('src')
+                use: 'babel-loader'
             },
             {
                 test: /\.(s[ac]|c)ss$/,
@@ -32,9 +30,8 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|gif)?$/,
-                loader: 'url-loader',
-                include: resolve('src/assets')
+                test: /\.(png|jpe?g|gif|woff|eot|ttf)$/,
+                type: 'asset'
             },
             {
                 test: /\.svg$/,
@@ -47,7 +44,7 @@ module.exports = {
             filename: 'css/[name].[contenthash].css'
         }),
         new HtmlWebpackPlugin({
-            template: 'public/index.html'
+            template: paths.templatePath
         })
     ],
     resolve: {
