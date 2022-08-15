@@ -15,7 +15,8 @@ module.exports = {
         rules: [
             {
                 test: /\.(ts|js)x?$/,
-                use: 'babel-loader'
+                use: 'babel-loader',
+                include: paths.root
             },
             {
                 test: /\.(s[ac]|c)ss$/,
